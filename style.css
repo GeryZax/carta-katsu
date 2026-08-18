@@ -1,0 +1,1849 @@
+/* =====================================
+   RESET
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+
+    overflow: hidden;
+
+    background: #000;
+
+    color: white;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* =====================================
+   ESCENA
+===================================== */
+
+.scene {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            #081321 0%,
+            #03070d 45%,
+            #000 100%
+        );
+}
+
+
+/* =====================================
+   CIELO
+===================================== */
+
+.sky {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+
+.moon {
+
+    position: absolute;
+
+    top: 10%;
+    right: 13%;
+
+    width: 90px;
+    height: 90px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #fff,
+            #dce7f5 55%,
+            #9fb0c5
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(220,235,255,.25);
+}
+
+
+.stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.7) 1px,
+            transparent 1px
+        );
+
+    background-size: 130px 130px;
+
+    opacity: .35;
+}
+
+
+/* =====================================
+   LUCIÉRNAGAS
+===================================== */
+
+#fireflies {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+
+.firefly {
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #9fd1ff;
+
+    box-shadow:
+        0 0 6px
+        rgba(95,174,255,.8);
+
+    animation:
+        fireflyMove
+        var(--duration)
+        ease-in-out
+        infinite alternate;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+@keyframes fireflyMove {
+
+    from {
+
+        transform:
+            translate(0,0);
+
+        opacity: .2;
+    }
+
+    to {
+
+        transform:
+            translate(
+                var(--move-x),
+                var(--move-y)
+            );
+
+        opacity: .8;
+    }
+}
+
+
+/* =====================================
+   ARBUSTO
+===================================== */
+
+.bush {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 20px;
+
+    width: 270px;
+    height: 220px;
+
+    transform:
+        translateX(-50%);
+
+    transform-origin:
+        center bottom;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    filter: none;
+
+    box-shadow:
+        0 15px 30px
+        rgba(0,0,0,.35);
+
+    transition:
+
+        transform
+        2.4s
+        cubic-bezier(.18,.8,.2,1),
+
+        bottom
+        2.4s
+        cubic-bezier(.18,.8,.2,1);
+
+    will-change:
+        transform;
+}
+
+
+/* =====================================
+   AURA
+===================================== */
+
+.bush-glow {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 230px;
+    height: 120px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(50,120,255,.12);
+
+    opacity: .5;
+
+    animation:
+        bushAura
+        5s
+        ease-in-out
+        infinite alternate;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+@keyframes bushAura {
+
+    from {
+
+        transform:
+            translateX(-50%)
+            scale(.95);
+
+        opacity: .3;
+    }
+
+    to {
+
+        transform:
+            translateX(-50%)
+            scale(1.08);
+
+        opacity: .55;
+    }
+}
+
+
+/* =====================================
+   TRONCO
+===================================== */
+
+.trunk {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 34px;
+    height: 95px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius:
+        18px 18px 6px 6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #100b12,
+            #38243d,
+            #160e19
+        );
+
+    box-shadow:
+        inset 4px 0 8px
+        rgba(255,255,255,.04);
+}
+
+
+/* =====================================
+   RAMAS
+===================================== */
+
+.branch {
+
+    position: absolute;
+
+    height: 10px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #140d18,
+            #3d2848,
+            #19101f
+        );
+
+    transform-origin:
+        left center;
+}
+
+
+.branch-1 {
+
+    left: 50%;
+    bottom: 63px;
+
+    width: 125px;
+
+    transform:
+        rotate(-37deg);
+}
+
+
+.branch-2 {
+
+    left: 50%;
+    bottom: 70px;
+
+    width: 125px;
+
+    transform:
+        rotate(37deg);
+}
+
+
+.branch-3 {
+
+    left: 50%;
+    bottom: 85px;
+
+    width: 110px;
+
+    transform:
+        rotate(-4deg);
+}
+
+
+/* =====================================
+   HOJAS
+===================================== */
+
+.leaf {
+
+    position: absolute;
+
+    width: 95px;
+    height: 58px;
+
+    border-radius:
+        80% 20% 80% 20%;
+
+    background:
+        radial-gradient(
+            ellipse at 35% 25%,
+            #314f7d,
+            #172d4b 55%,
+            #091525 100%
+        );
+
+    box-shadow:
+        inset -8px -5px 15px
+        rgba(0,0,0,.35);
+
+    animation:
+        leafIdle
+        6s
+        ease-in-out
+        infinite alternate;
+
+    will-change:
+        transform;
+}
+
+
+.leaf::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 15%;
+    top: 50%;
+
+    width: 70%;
+    height: 1px;
+
+    transform:
+        rotate(-12deg);
+
+    background:
+        rgba(130,180,240,.2);
+}
+
+
+/* =====================================
+   POSICIONES HOJAS
+===================================== */
+
+.leaf-1 {
+
+    left: 70px;
+    top: 18px;
+
+    transform:
+        rotate(-15deg);
+}
+
+
+.leaf-2 {
+
+    left: 5px;
+    top: 65px;
+
+    transform:
+        rotate(28deg);
+}
+
+
+.leaf-3 {
+
+    right: 0;
+    top: 65px;
+
+    transform:
+        rotate(-35deg);
+}
+
+
+.leaf-4 {
+
+    left: 65px;
+    top: 80px;
+
+    transform:
+        rotate(8deg);
+}
+
+
+.leaf-5 {
+
+    left: -5px;
+    top: 22px;
+
+    transform:
+        rotate(-48deg);
+}
+
+
+.leaf-6 {
+
+    right: -8px;
+    top: 18px;
+
+    transform:
+        rotate(40deg);
+}
+
+
+.leaf-7 {
+
+    left: 83px;
+    top: -5px;
+}
+
+
+.leaf-8 {
+
+    left: 128px;
+    top: 92px;
+
+    transform:
+        rotate(43deg);
+}
+
+
+.leaf-9 {
+
+    left: 148px;
+    top: 42px;
+
+    transform:
+        rotate(-20deg);
+}
+
+
+.leaf-10 {
+
+    left: 30px;
+    top: 108px;
+
+    transform:
+        rotate(48deg);
+}
+
+
+@keyframes leafIdle {
+
+    from {
+
+        transform:
+            translateY(0);
+    }
+
+    to {
+
+        transform:
+            translateY(-3px);
+    }
+}
+
+
+/* =====================================
+   FLORES DEL ARBUSTO
+===================================== */
+
+.bush-flower {
+
+    position: absolute;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #d9efff 0 18%,
+            #6aaeff 20% 45%,
+            #2878df 55% 100%
+        );
+
+    box-shadow:
+        0 0 8px
+        rgba(85,165,255,.8);
+
+    opacity: .9;
+
+    animation:
+        bushFlowerFloat
+        4s
+        ease-in-out
+        infinite alternate;
+
+    will-change:
+        transform;
+}
+
+
+.bush-flower::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 5px;
+    height: 5px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background: white;
+}
+
+
+.flower-a {
+
+    left: 72px;
+    top: 62px;
+}
+
+
+.flower-b {
+
+    left: 170px;
+    top: 49px;
+
+    animation-delay:
+        -1.5s;
+}
+
+
+.flower-c {
+
+    left: 127px;
+    top: 20px;
+
+    animation-delay:
+        -2s;
+}
+
+
+@keyframes bushFlowerFloat {
+
+    from {
+
+        transform:
+            translateY(0)
+            scale(.95);
+    }
+
+    to {
+
+        transform:
+            translateY(-5px)
+            scale(1.05);
+    }
+}
+
+
+/* =====================================
+   CLICK DEL ARBUSTO
+===================================== */
+
+.bush.magic-start {
+
+    animation:
+        bushBounce
+        .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+@keyframes bushBounce {
+
+    0% {
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+    35% {
+
+        transform:
+            translateX(-50%)
+            scale(1.08,.92);
+    }
+
+    65% {
+
+        transform:
+            translateX(-50%)
+            scale(.97,1.04);
+    }
+
+    100% {
+
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+}
+
+
+/* =====================================
+   ARBUSTO EXPANDIDO
+===================================== */
+
+.bush.expanded {
+
+    bottom: 37%;
+
+    transform:
+        translateX(-50%)
+        scale(2.15);
+
+    filter: none;
+
+    box-shadow:
+
+        0 0 35px
+        rgba(50,130,255,.25),
+
+        0 20px 30px
+        rgba(0,0,0,.5);
+
+    will-change:
+        transform;
+}
+
+
+/* =====================================
+   HOJAS AL DESPERTAR
+===================================== */
+
+.bush.expanded
+.leaf {
+
+    animation:
+        leafMagic
+        2s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes leafMagic {
+
+    from {
+
+        transform:
+            translateY(0)
+            rotate(-1deg);
+    }
+
+    to {
+
+        transform:
+            translateY(-5px)
+            rotate(3deg);
+    }
+}
+
+
+/* =====================================
+   AURA ACTIVADA
+===================================== */
+
+.bush.expanded
+.bush-glow {
+
+    opacity: .8;
+
+    background:
+        rgba(50,130,255,.2);
+
+    animation:
+        bushMagicGlow
+        2s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes bushMagicGlow {
+
+    from {
+
+        transform:
+            translateX(-50%)
+            scale(.9);
+
+        opacity: .45;
+    }
+
+    to {
+
+        transform:
+            translateX(-50%)
+            scale(1.2);
+
+        opacity: .8;
+    }
+}
+
+
+/* =====================================
+   ÁREA DE LA K
+===================================== */
+
+.initial-area {
+
+    position: absolute;
+
+    top: 50%;
+    right: 8%;
+
+    transform:
+        translateY(-50%)
+        translateX(60px);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    text-align: center;
+
+    transition:
+
+        opacity
+        1.2s ease,
+
+        transform
+        1.2s ease;
+}
+
+
+.initial-area.visible {
+
+    opacity: 1;
+
+    pointer-events: all;
+
+    transform:
+        translateY(-50%)
+        translateX(0);
+}
+
+
+.initial-title {
+
+    margin-bottom: 20px;
+
+    font-size: 22px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.85);
+}
+
+
+.initial-subtitle {
+
+    margin-top: -10px;
+
+    margin-bottom: 25px;
+
+    font-size: 13px;
+
+    letter-spacing: 1.5px;
+
+    color:
+        rgba(180,210,255,.45);
+
+    font-style: italic;
+}
+
+
+/* =====================================
+   K
+===================================== */
+
+.letter-k {
+
+    position: relative;
+
+    width: 220px;
+    height: 300px;
+
+    margin: auto;
+}
+
+
+.k-line {
+
+    position: absolute;
+
+    height: 8px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(80,150,255,.28);
+
+    box-shadow:
+        0 0 8px
+        rgba(50,140,255,.2);
+
+    transition:
+        background .4s ease,
+        box-shadow .4s ease;
+}
+
+
+.k-vertical {
+
+    left: 25px;
+    top: 0;
+
+    width: 8px;
+
+    height: 300px;
+}
+
+
+.k-upper {
+
+    left: 55px;
+    top: 145px;
+
+    width: 190px;
+
+    transform:
+        rotate(-43deg);
+
+    transform-origin:
+        left center;
+}
+
+
+.k-lower {
+
+    left: 55px;
+    top: 145px;
+
+    width: 190px;
+
+    transform:
+        rotate(43deg);
+
+    transform-origin:
+        left center;
+}
+
+
+/* =====================================
+   SLOTS
+===================================== */
+
+.k-slots {
+
+    position: absolute;
+
+    inset: 0;
+}
+
+
+.k-slot {
+
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(80,150,255,.15);
+
+    background:
+        rgba(50,120,255,.025);
+
+    transition:
+        background .25s ease,
+        box-shadow .25s ease,
+        border .25s ease;
+}
+
+
+.k-slot.filled {
+
+    border:
+        1px solid
+        rgba(80,160,255,.5);
+
+    background:
+        rgba(60,140,255,.08);
+
+    box-shadow:
+        0 0 15px
+        rgba(60,140,255,.2);
+}
+
+
+/* =====================================
+   FLORES
+===================================== */
+
+.flowers-container {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 30;
+}
+
+
+.flower {
+
+    position: fixed;
+
+    width: 42px;
+    height: 42px;
+
+    pointer-events: all;
+
+    cursor: grab;
+
+    touch-action: none;
+
+    user-select: none;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(40,130,255,.45)
+        );
+
+    will-change:
+        left,
+        top,
+        transform;
+}
+
+
+.flower:active {
+
+    cursor: grabbing;
+}
+
+
+.flower::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    left: 12px;
+    top: 12px;
+
+    border-radius: 50%;
+
+    background: #388cff;
+
+    box-shadow:
+
+        0 -12px #388cff,
+        0 12px #388cff,
+        -12px 0 #388cff,
+        12px 0 #388cff,
+
+        -9px -9px #388cff,
+        9px -9px #388cff,
+        -9px 9px #388cff,
+        9px 9px #388cff;
+}
+
+
+.flower::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 16px;
+    top: 16px;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #e4f2ff;
+
+    box-shadow:
+        0 0 7px #fff;
+}
+
+
+.flower.floating {
+
+    animation:
+        flowerFloat
+        3.5s
+        ease-in-out
+        infinite alternate;
+}
+
+
+@keyframes flowerFloat {
+
+    from {
+
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    to {
+
+        transform:
+            translateY(-8px)
+            rotate(2deg);
+    }
+}
+
+
+.flower.placed {
+
+    pointer-events: none;
+
+    animation: none;
+}
+
+
+/* =====================================
+   K COMPLETADA
+===================================== */
+
+.letter-k.completed
+.k-line {
+
+    background:
+        #5da5ff;
+
+    box-shadow:
+
+        0 0 10px
+        #398eff,
+
+        0 0 20px
+        rgba(50,140,255,.6);
+}
+
+
+/* =====================================
+   PARTÍCULAS
+===================================== */
+
+#particles {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 50;
+}
+
+
+.particle {
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #6db5ff;
+
+    box-shadow:
+        0 0 6px
+        #3588ff;
+
+    animation:
+        particleFloat
+        1.5s
+        ease-out
+        forwards;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+@keyframes particleFloat {
+
+    from {
+
+        opacity: .9;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    to {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.2);
+    }
+}
+
+
+/* =====================================
+   TRANSICIÓN
+===================================== */
+
+.letter-transition {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 60;
+
+    transition:
+        opacity .8s ease;
+}
+
+
+.letter-transition.active {
+
+    opacity: 1;
+}
+
+
+.transition-glow {
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+
+        0 0 15px #fff,
+        0 0 45px #4f9cff;
+
+    transform:
+        scale(0);
+
+    transition:
+        transform
+        1.3s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+.letter-transition.active
+.transition-glow {
+
+    transform:
+        scale(70);
+}
+
+
+/* =====================================
+   SOBRE
+===================================== */
+
+.envelope {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.5);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    cursor: pointer;
+
+    z-index: 70;
+
+    transition:
+
+        opacity
+        1s ease,
+
+        transform
+        1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+.envelope.visible {
+
+    opacity: 1;
+
+    pointer-events: all;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+}
+
+
+.envelope-paper {
+
+    position: relative;
+
+    width: 290px;
+    height: 195px;
+
+    background: #eee;
+
+    overflow: hidden;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.6);
+
+    transition:
+        transform .4s ease;
+}
+
+
+.envelope:hover
+.envelope-paper {
+
+    transform:
+        translateY(-6px);
+}
+
+
+.envelope-flap {
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    border-left:
+        145px solid transparent;
+
+    border-right:
+        145px solid transparent;
+
+    border-top:
+        100px solid #d2d2d2;
+
+    z-index: 5;
+}
+
+
+.envelope-left {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    border-top:
+        100px solid transparent;
+
+    border-left:
+        145px solid #c7c7c7;
+}
+
+
+.envelope-right {
+
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    border-top:
+        100px solid transparent;
+
+    border-right:
+        145px solid #c7c7c7;
+}
+
+
+.envelope-bottom {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    border-left:
+        145px solid transparent;
+
+    border-right:
+        145px solid transparent;
+
+    border-bottom:
+        100px solid #dadada;
+}
+
+
+.envelope-seal {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-30%);
+
+    z-index: 20;
+
+    color: #428eff;
+
+    font-size: 45px;
+
+    text-shadow:
+        0 0 12px
+        rgba(50,140,255,.6);
+}
+
+
+.open-hint {
+
+    margin-top: 18px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.6);
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    transition:
+        opacity .3s ease;
+}
+
+
+.envelope:hover
+.open-hint {
+
+    opacity: 1;
+}
+
+
+/* =====================================
+   CARTA
+===================================== */
+
+.letter-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0,0,0,.9);
+
+    backdrop-filter:
+        blur(6px);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    transition:
+        opacity .7s ease;
+}
+
+
+.letter-overlay.open {
+
+    opacity: 1;
+
+    pointer-events: all;
+}
+
+
+/* =====================================
+   PAPEL
+===================================== */
+
+.letter {
+
+    position: relative;
+
+    width:
+        min(760px, 90vw);
+
+    height:
+        min(700px, 86vh);
+
+    padding:
+        50px 65px;
+
+    overflow-y: auto;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #fbf8ed,
+            #eee7d3
+        );
+
+    color: #292929;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.6);
+
+    transform:
+        scale(.7)
+        rotate(-3deg);
+
+    opacity: 0;
+
+    transition:
+
+        transform
+        .8s
+        cubic-bezier(.2,.8,.2,1),
+
+        opacity
+        .8s ease;
+}
+
+
+.letter-overlay.open
+.letter {
+
+    transform:
+        scale(1)
+        rotate(0);
+
+    opacity: 1;
+}
+
+
+/* =====================================
+   SCROLL
+===================================== */
+
+.letter::-webkit-scrollbar {
+
+    width: 6px;
+}
+
+
+.letter::-webkit-scrollbar-track {
+
+    background:
+        rgba(0,0,0,.05);
+}
+
+
+.letter::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(60,100,150,.35);
+
+    border-radius: 10px;
+}
+
+
+/* =====================================
+   BOTÓN CERRAR
+===================================== */
+
+.close-letter {
+
+    position: absolute;
+
+    right: 20px;
+    top: 15px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #555;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+/* =====================================
+   DECORACIÓN
+===================================== */
+
+.letter-top-decoration {
+
+    text-align: center;
+
+    font-size: 25px;
+
+    color: #438fff;
+
+    margin-bottom: 8px;
+}
+
+
+/* =====================================
+   TÍTULO
+===================================== */
+
+.letter h1 {
+
+    text-align: center;
+
+    font-size: 40px;
+
+    font-weight: normal;
+
+    margin-bottom: 15px;
+}
+
+
+/* =====================================
+   SEPARADOR
+===================================== */
+
+.letter-divider {
+
+    width: 110px;
+    height: 1px;
+
+    margin:
+        0 auto 35px;
+
+    background: #555;
+}
+
+
+/* =====================================
+   TEXTO
+===================================== */
+
+.letter-content p {
+
+    margin-bottom: 18px;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+
+    text-align: left;
+}
+
+
+/* =====================================
+   FIRMA
+===================================== */
+
+.signature {
+
+    margin-top: 30px;
+
+    text-align: right !important;
+
+    font-style: italic;
+}
+
+
+.signature span {
+
+    color: #438fff;
+
+    font-size: 28px;
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 800px) {
+
+    .initial-area {
+
+        right: 3%;
+    }
+
+
+    .letter-k {
+
+        transform:
+            scale(.8);
+    }
+
+
+    .bush.expanded {
+
+        transform:
+            translateX(-50%)
+            scale(1.7);
+    }
+
+}
+
+
+/* =====================================
+   CELULAR
+===================================== */
+
+@media (max-width: 600px) {
+
+    .initial-area {
+
+        top: 18%;
+
+        right: 50%;
+
+        transform:
+            translateX(50%);
+    }
+
+
+    .initial-area.visible {
+
+        transform:
+            translateX(50%);
+    }
+
+
+    .letter-k {
+
+        transform:
+            scale(.55);
+    }
+
+
+    .bush.expanded {
+
+        bottom: 34%;
+
+        transform:
+            translateX(-50%)
+            scale(1.3);
+    }
+
+
+    .initial-title {
+
+        font-size: 18px;
+    }
+
+
+    .initial-subtitle {
+
+        font-size: 11px;
+    }
+
+
+    .letter {
+
+        width: 92vw;
+
+        height: 84vh;
+
+        padding:
+            40px 28px;
+    }
+
+
+    .letter h1 {
+
+        font-size: 30px;
+    }
+
+
+    .letter-content p {
+
+        font-size: 15px;
+
+        line-height: 1.6;
+
+        margin-bottom: 17px;
+    }
+
+
+    .letter-divider {
+
+        margin-bottom: 28px;
+    }
+
+}
